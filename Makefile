@@ -1,5 +1,6 @@
 
 DB = boston.db
+APP = experiment-no-spatialite
 
 GEOJSON = data/council-districts.geojson \
 	data/cannabis.geojson \
@@ -25,3 +26,15 @@ tables: $(GEOJSON)
 	pipenv run geojson-to-sqlite $(DB) districts data/council-districts.geojson --pk FID
 	pipenv run geojson-to-sqlite $(DB) cannabis data/cannabis.geojson --pk ObjectId
 	pipenv run geojson-to-sqlite $(DB) wifi data/wifi.geojson --pk ObjectId
+
+deploy:
+	pipenv run datasette publish fly $(DB) \
+		--app $(APP) \
+		--install datasette-geojson-map \
+		--install shapely \
+		--install sqlite-colorbrewer \
+		-m metadata.yml \
+		--plugins-dir plugins
+
+open:
+	fly open --app $(APP)

@@ -12,6 +12,7 @@ sqlite-colorbrewer = "*"
 shapely = "*"
 ipython = "*"
 datasette-query-files = "*"
+datasette-publish-fly = "*"
 
 [dev-packages]
 ipython = "*"

@@ -1,1 +1,16 @@
 # https://docs.datasette.io/en/stable/metadata.html
+
+databases:
+  boston:
+    queries:
+      cannabis-by-district:
+        title: Cannabis permits by council district
+        sql: |
+          select
+              cannabis.*
+          from
+              districts,
+              cannabis
+          where
+              districts.DISTRICT = cast(:district as numeric)
+              and contains(districts.geometry, cannabis.geometry)
