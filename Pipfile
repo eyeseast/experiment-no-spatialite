@@ -9,9 +9,12 @@ sqlite-utils = "*"
 geojson-to-sqlite = "*"
 datasette-geojson-map = "*"
 sqlite-colorbrewer = "*"
+shapely = "*"
+ipython = "*"
+datasette-query-files = "*"
 
 [dev-packages]
 ipython = "*"
 
 [requires]
-python_version = "3.10"
+python_version = "3.11"
